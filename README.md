@@ -53,7 +53,7 @@ export const requireVerifiedEmail = (
 };
 ```
 
-#Role Middleware (Multi ROle)
+# Role Middleware (Multi Role)
 
 ```jsx
 import { Request, Response, NextFunction } from "express";
