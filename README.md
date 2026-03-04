@@ -53,24 +53,28 @@ export const requireVerifiedEmail = (
 };
 ```
 
-#Role Middleware (ADMIN Only)
+#Role Middleware (Multi ROle)
 
 ```jsx
-export const requireAdmin = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const user = (req as any).user;
+import { Request, Response, NextFunction } from "express";
 
-  if (user.role !== "ADMIN") {
-    return res.status(403).json({
-      message: "Access denied. Admin only.",
-    });
-  }
+export const requireRole =
+  (...allowedRoles: string[]) =>
+  (req: Request, res: Response, next: NextFunction) => {
+    const user = (req as any).user;
 
-  next();
-};
+    if (!user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    if (!allowedRoles.includes(user.role)) {
+      return res
+        .status(403)
+        .json({ message: "Access denied. Insufficient role." });
+    }
+
+    next();
+  };
 ```
 
 
