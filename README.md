@@ -76,12 +76,6 @@ export const requireAdmin = (
 
 ## 🔐 Middleware Execution Order
 
-When accessing:
-
-```
-GET /admin-dashboard
-```
-
 Middlewares run in this order:
 
 1. `requireAuth` → Check login  
