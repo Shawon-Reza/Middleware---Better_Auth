@@ -1,7 +1,7 @@
 # Middleware---Better_Auth
 
 ```jsx
-# Auth Middleware (Check Logged In User)
+
 import { Request, Response, NextFunction } from "express";
 import { auth } from "../auth"; // your betterAuth instance
 
